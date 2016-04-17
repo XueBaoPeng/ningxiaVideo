@@ -23,9 +23,6 @@ public class AppConstants {
 
         public final static String SEND_VERIFY_CODE = "/common/send_verify_code_to_phone.json";
 
-        public final static String RESET_PASSWORD = "/users/reset_password.json";
-
-        public final static String USERS_UPDATE = "/users/update.json";
 
         public final static String FRIENDSHIPS = "/friendships/friends.json";
 

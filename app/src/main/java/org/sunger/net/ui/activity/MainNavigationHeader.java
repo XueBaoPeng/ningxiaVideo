@@ -1,7 +1,6 @@
 package org.sunger.net.ui.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.text.TextUtils;
 import android.view.View;
@@ -73,13 +72,13 @@ public class MainNavigationHeader implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.textView_login:
-                mActivity.startActivity(new Intent(mActivity, LoginActivity.class));
+               // mActivity.startActivity(new Intent(mActivity, LoginActivity.class));
                 break;
             case R.id.textView_signup:
-                mActivity.startActivity(new Intent(mActivity, SignUpActivity.class));
+              //  mActivity.startActivity(new Intent(mActivity, SignUpActivity.class));
                 break;
             case R.id.imageView_avatar:
-                mActivity.startActivity(new Intent(mActivity, UserInfoActivity.class));
+               // mActivity.startActivity(new Intent(mActivity, UserInfoActivity.class));
                 break;
         }
     }

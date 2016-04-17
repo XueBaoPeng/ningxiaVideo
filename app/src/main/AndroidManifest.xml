@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sunger.org.demo">
 
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -36,26 +37,6 @@
         <activity
             android:name="org.sunger.net.ui.activity.WebViewActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name="org.sunger.net.ui.activity.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name="org.sunger.net.ui.activity.SignUpActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name="org.sunger.net.ui.activity.ResetPasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-
-        <activity
-            android:name="org.sunger.net.ui.activity.UserInfoActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name="org.sunger.net.ui.activity.UserInfoEditActivity"
-            android:theme="@style/AppTheme.NoActionBar.Preference"></activity>
 
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
 

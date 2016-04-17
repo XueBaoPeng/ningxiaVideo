@@ -11,11 +11,6 @@ public interface PlayVideoPresenter {
 
     void loadMore(int id, int page);
 
-    void createLikeVideo(int id);
-
-    void destoryLikeVideo(int id);
-
-
     void createLikeComment(int id);
 
     void destoryLikeComment(int id);

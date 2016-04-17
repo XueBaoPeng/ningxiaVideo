@@ -91,36 +91,6 @@ public class PlayVideoPresenterImpl implements PlayVideoPresenter {
     }
 
     @Override
-    public void createLikeVideo(int id) {
-        model.createVideoLike(id, new ResultCallback<JsonElement>() {
-            @Override
-            public void onError(Request request, Exception e) {
-
-            }
-
-            @Override
-            public void onResponse(JsonElement response) {
-
-            }
-        });
-    }
-
-    @Override
-    public void destoryLikeVideo(int id) {
-        model.destoryVideoLike(id, new ResultCallback<JsonElement>() {
-            @Override
-            public void onError(Request request, Exception e) {
-
-            }
-
-            @Override
-            public void onResponse(JsonElement response) {
-
-            }
-        });
-    }
-
-    @Override
     public void createLikeComment(int id) {
         model.createCommentLike(id, new ResultCallback<JsonElement>() {
             @Override
