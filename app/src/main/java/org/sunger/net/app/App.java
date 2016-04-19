@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  * Created by sunger on 2015/10/27.
  */
 public class App extends Application {
+
     private static final int CONNECT_TIMEOUT_MILLIS = 10 * 1000; // 15s
     private static final int READ_TIMEOUT_MILLIS = 15 * 1000; // 20s
     private static App instance;
