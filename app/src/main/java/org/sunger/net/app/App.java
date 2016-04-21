@@ -1,11 +1,14 @@
 package org.sunger.net.app;
 
 import android.app.Application;
+import android.content.Context;
+import android.os.Environment;
 
 import com.squareup.okhttp.OkHttpClient;
 
 import org.sunger.net.entity.OauthUserEntity;
 import org.sunger.net.support.okhttp.OkHttpClientManager;
+import org.sunger.net.util.FileUtils;
 import org.sunger.net.utils.DeviceUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -21,14 +24,22 @@ public class App extends Application {
     private OkHttpClient okHttpClient;
     private OauthUserEntity entity;
 
+    public static final String OPLAYER_CACHE_BASE = Environment.getExternalStorageDirectory() + "/oplayer";
+    public static final String OPLAYER_VIDEO_THUMB = OPLAYER_CACHE_BASE + "/thumb/";
+    public static final String PREF_KEY_FIRST = "application_first";
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
+        init();
         initOkHttp();
         DeviceUtils.init(this);
     }
-
+    private void init() {
+        FileUtils.createIfNoExists(OPLAYER_CACHE_BASE);
+        FileUtils.createIfNoExists(OPLAYER_VIDEO_THUMB);
+    }
     private void initOkHttp() {
         okHttpClient =
                 OkHttpClientManager.getInstance().getOkHttpClient();
@@ -46,6 +57,9 @@ public class App extends Application {
         return entity;
     }
 
+    public static Context getContext() {
+        return instance;
+    }
     public static App getInstance() {
         return instance;
     }

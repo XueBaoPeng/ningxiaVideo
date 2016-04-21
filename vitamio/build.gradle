@@ -27,4 +27,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
- }
+    compile files('libs/ormlite-android-4.42-SNAPSHOT.jar')
+    compile files('libs/ormlite-core-4.42-SNAPSHOT.jar')
+    compile files('libs/pinyin4j-2.5.0.jar')
+}

@@ -1,5 +1,6 @@
 package org.sunger.net.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -15,6 +16,7 @@ import org.sunger.net.entity.CategoryEntity;
 import org.sunger.net.presenter.CategoryPresenter;
 import org.sunger.net.presenter.impl.CategoryPresenterImpl;
 import org.sunger.net.ui.adapter.FragmentAdapter;
+import org.sunger.net.ui.localVide.LocalVideoActivity;
 import org.sunger.net.view.CategoryView;
 
 import sunger.org.demo.R;
@@ -113,6 +115,8 @@ public class MainActivity extends BaseCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            Intent intent=new Intent(MainActivity.this, LocalVideoActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

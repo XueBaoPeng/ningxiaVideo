@@ -32,6 +32,11 @@
 
     <color name="color_nomorl">#123</color>
     <color name="color_pressed">#666666</color>
+    <color name="higtlight">#ff0078f0</color>
+    <color name="durationtext">#ff7d7d7d</color>
+    <color name="background">#ffc3ddea</color>
+    <color name="yellow">#ffffcc00</color>
+    <color name="title">#ff274462</color>
 
 
 </resources>
