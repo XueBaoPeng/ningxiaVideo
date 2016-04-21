@@ -25,6 +25,7 @@ import org.sunger.net.view.PlayVideoView;
 
 import java.util.List;
 
+import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.Vitamio;
 import sunger.org.demo.R;
 
@@ -47,7 +48,7 @@ public class VideoPlayActivity extends BaseCompatActivity implements PlayVideoVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Vitamio.initialize(this))
+        if (!Vitamio.initialize(this))
             return;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_video_play);
