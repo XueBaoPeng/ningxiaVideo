@@ -38,7 +38,7 @@ import io.vov.vitamio.provider.MediaStore;
 /** 媒体扫描 */
 public class MediaScannerService extends Service implements Runnable {
 
-    private static final String SERVICE_NAME = "com.nmbb.oplayer.service.MediaScannerService";
+    private static final String SERVICE_NAME = "org.sunger.net.service.MediaScannerService";
     /** 扫描文件夹 */
     public static final String EXTRA_DIRECTORY = "scan_directory";
     /** 扫描文件 */

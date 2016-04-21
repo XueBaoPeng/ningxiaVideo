@@ -13,6 +13,8 @@ import org.sunger.net.utils.DeviceUtils;
 
 import java.util.concurrent.TimeUnit;
 
+import io.vov.vitamio.Vitamio;
+
 /**
  * Created by sunger on 2015/10/27.
  */
@@ -39,6 +41,7 @@ public class App extends Application {
     private void init() {
         FileUtils.createIfNoExists(OPLAYER_CACHE_BASE);
         FileUtils.createIfNoExists(OPLAYER_VIDEO_THUMB);
+        Vitamio.isInitialized(getApplicationContext());
     }
     private void initOkHttp() {
         okHttpClient =

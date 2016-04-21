@@ -18,7 +18,6 @@ import org.sunger.net.service.MediaScannerService;
 import org.sunger.net.ui.OPreference;
 import org.sunger.net.ui.helper.FileDownloadHelper;
 
-import io.vov.vitamio.Vitamio;
 import sunger.org.demo.R;
 
 
@@ -33,12 +32,11 @@ public class LocalVideoActivity extends FragmentActivity implements OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Vitamio.isInitialized(getApplicationContext());
 
         OPreference pref = new OPreference(this);
         //	首次运行，扫描SD卡
         if (pref.getBoolean(App.PREF_KEY_FIRST, true)) {
-            getApplicationContext().startService(new Intent(getApplicationContext(), MediaScannerService.class).putExtra(MediaScannerService.EXTRA_DIRECTORY, Environment.getExternalStorageDirectory().getAbsolutePath()));
+            this.startService(new Intent(getApplicationContext(), MediaScannerService.class).putExtra(MediaScannerService.EXTRA_DIRECTORY, Environment.getExternalStorageDirectory().getAbsolutePath()));
         }
 
         setContentView(R.layout.fragment_pager);
