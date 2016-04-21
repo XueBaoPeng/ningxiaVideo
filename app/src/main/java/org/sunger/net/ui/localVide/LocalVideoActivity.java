@@ -16,12 +16,13 @@ import android.widget.RadioButton;
 import org.sunger.net.app.App;
 import org.sunger.net.service.MediaScannerService;
 import org.sunger.net.ui.OPreference;
+import org.sunger.net.ui.activity.BaseCompatActivity;
 import org.sunger.net.ui.helper.FileDownloadHelper;
 
 import sunger.org.demo.R;
 
 
-public class LocalVideoActivity extends FragmentActivity implements OnClickListener {
+public class LocalVideoActivity extends BaseCompatActivity implements OnClickListener {
 
 
     private ViewPager mPager;

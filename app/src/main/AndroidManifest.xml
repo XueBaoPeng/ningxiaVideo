@@ -51,7 +51,8 @@
             android:name="org.sunger.net.ui.activity.WebViewActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
@@ -63,13 +64,13 @@
             android:name="org.sunger.net.ui.localVide.PlayerActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name="org.sunger.net.ui.localVide.LocalVideoActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <receiver android:name="org.sunger.net.receiver.MediaScannerReceiver" >
 
@@ -95,7 +96,7 @@
             android:name="org.sunger.net.ui.localVide.VideoPlayerActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

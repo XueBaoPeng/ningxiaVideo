@@ -8,11 +8,13 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 
+import org.sunger.net.ui.activity.BaseCompatActivity;
+
 import io.vov.vitamio.MediaPlayer;
 import sunger.org.demo.R;
 
 
-public class PlayerActivity extends Activity implements MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnVideoSizeChangedListener, SurfaceHolder.Callback {
+public class PlayerActivity extends BaseCompatActivity implements MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnVideoSizeChangedListener, SurfaceHolder.Callback {
 
 	private static final String TAG = "MediaPlayerDemo";
 	private int mVideoWidth;

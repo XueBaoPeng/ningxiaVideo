@@ -27,6 +27,7 @@ import android.widget.ImageView;
 
 
 import org.sunger.net.exception.Logger;
+import org.sunger.net.ui.activity.BaseCompatActivity;
 
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
@@ -34,7 +35,7 @@ import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 import sunger.org.demo.R;
 
-public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnInfoListener {
+public class VideoPlayerActivity extends BaseCompatActivity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnInfoListener {
 
 	private String mPath;
 	private String mTitle;
@@ -58,9 +59,6 @@ public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompl
 	@Override
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
-
-		Vitamio.isInitialized(getApplicationContext());
-
 		// ~~~ 获取播放地址和标题
 		Intent intent = getIntent();
 		mPath = intent.getStringExtra("path");

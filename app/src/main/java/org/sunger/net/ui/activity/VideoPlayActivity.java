@@ -25,7 +25,6 @@ import org.sunger.net.view.PlayVideoView;
 
 import java.util.List;
 
-import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.Vitamio;
 import sunger.org.demo.R;
 
