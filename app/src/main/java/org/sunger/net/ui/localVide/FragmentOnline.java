@@ -70,7 +70,7 @@ public class FragmentOnline extends FragmentBase implements OnItemClickListener 
 		mLoading = mView.findViewById(R.id.loading);
 
 		mListView.setOnItemClickListener(this);
-		initWebView();
+		//initWebView();
 		mAdapter = new DataAdapter(getActivity());
 		mListView.setAdapter(new DataAdapter(getActivity()));
 		return mView;
@@ -123,7 +123,8 @@ public class FragmentOnline extends FragmentBase implements OnItemClickListener 
 		mHistory.clear();
 		mWebView.clearView();
 		mWebView.loadUrl(url);
-		WebViewActivity.createIntent(getContext(),url);
+		Intent intent = WebViewActivity.createIntent(getContext(), url);
+		startActivity(intent);
 	}
 
 	@Override
