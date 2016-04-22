@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -17,7 +16,6 @@ import org.sunger.net.app.App;
 import org.sunger.net.service.MediaScannerService;
 import org.sunger.net.ui.OPreference;
 import org.sunger.net.ui.activity.BaseCompatActivity;
-import org.sunger.net.ui.helper.FileDownloadHelper;
 
 import sunger.org.demo.R;
 
@@ -28,7 +26,6 @@ public class LocalVideoActivity extends BaseCompatActivity implements OnClickLis
     private ViewPager mPager;
     private RadioButton mRadioFile;
     private RadioButton mRadioOnline;
-   // public FileDownloadHelper mFileDownload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

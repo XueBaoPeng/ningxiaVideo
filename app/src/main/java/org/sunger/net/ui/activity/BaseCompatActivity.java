@@ -75,7 +75,7 @@ public class BaseCompatActivity extends AppCompatActivity {
     }
 
     private void showOpenWifiDialog() {
-        final Dialog dialog = new Dialog(this, "美视提醒", "检测到当前网络没有连接是否开启网络？");
+        final Dialog dialog = new Dialog(this, "温馨提示", "检测到当前网络没有连接是否开启网络？");
         dialog.setOnAcceptButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +93,7 @@ public class BaseCompatActivity extends AppCompatActivity {
     }
 
     private void showExitDialog(String msg) {
-        final Dialog dialog = new Dialog(this, "美视提醒", msg);
+        final Dialog dialog = new Dialog(this, "温馨提示", msg);
         dialog.setOnAcceptButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

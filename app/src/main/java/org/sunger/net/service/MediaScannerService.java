@@ -223,7 +223,7 @@ public class MediaScannerService extends Service implements Runnable {
             media.last_access_time = System.currentTimeMillis();
 
             //提取缩略图
-            //			extractThumbnail(media);
+           		extractThumbnail(media);
             media.mime_type = FileUtils.getMimeType(media.path);
 
             //入库

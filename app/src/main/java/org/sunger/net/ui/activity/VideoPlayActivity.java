@@ -1,6 +1,7 @@
 package org.sunger.net.ui.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import org.sunger.net.presenter.impl.PlayVideoPresenterImpl;
 import org.sunger.net.support.recyclerview.OnRecycleViewScrollListener;
 import org.sunger.net.support.recyclerview.TopScrollListener;
 import org.sunger.net.ui.adapter.CommentsAdapter;
+import org.sunger.net.utils.ClipboardUtils;
 import org.sunger.net.utils.DensityUtil;
 import org.sunger.net.utils.DeviceUtils;
 import org.sunger.net.view.PlayVideoView;
@@ -176,34 +178,5 @@ public class VideoPlayActivity extends BaseCompatActivity implements PlayVideoVi
         mPresenter.destoryLikeComment(id);
     }
 
-//    /**
-//     * 点击回复弹出
-//     */
-//    private class CommentOnClickListener implements DialogInterface.OnClickListener {
-//        private int position;
-//
-//        public CommentOnClickListener(int position) {
-//            this.position = position - 1;
-//        }
-//
-//        @Override
-//        public void onClick(DialogInterface dialog, int which) {
-//            switch (which) {
-//                case 0:
-//                    break;
-//                case 1:
-//                    ClipboardUtils.copy(VideoPlayActivity.this, commentsAdapter.getItem(position).getContent());
-//                    dialog.dismiss();
-//                    showMsgInBottom("已复制到剪切板");
-//                    break;
-//                case 2:
-//                    startActivity(WebViewActivity.createIntent(VideoPlayActivity.this, "http://www.baidu.com"));
-//                    break;
-//                case 3:
-//                    dialog.dismiss();
-//                    break;
-//            }
-//        }
-//
-//    }
+
 }
