@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 
 import org.sunger.net.po.OnlineVideo;
+import org.sunger.net.ui.activity.WebViewActivity;
 import org.sunger.net.ui.base.ArrayAdapter;
 import org.sunger.net.ui.helper.XmlReaderHelper;
 import org.sunger.net.util.FileUtils;
@@ -122,6 +123,7 @@ public class FragmentOnline extends FragmentBase implements OnItemClickListener 
 		mHistory.clear();
 		mWebView.clearView();
 		mWebView.loadUrl(url);
+		WebViewActivity.createIntent(getContext(),url);
 	}
 
 	@Override

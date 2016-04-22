@@ -17,6 +17,7 @@ import org.sunger.net.presenter.CategoryPresenter;
 import org.sunger.net.presenter.impl.CategoryPresenterImpl;
 import org.sunger.net.ui.adapter.FragmentAdapter;
 import org.sunger.net.ui.localVide.LocalVideoActivity;
+import org.sunger.net.ui.localVide.Local_video_activity;
 import org.sunger.net.view.CategoryView;
 
 import sunger.org.demo.R;
@@ -118,6 +119,8 @@ public class MainActivity extends BaseCompatActivity
             Intent intent=new Intent(MainActivity.this, LocalVideoActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
+            Intent intent=new Intent(MainActivity.this, Local_video_activity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 
