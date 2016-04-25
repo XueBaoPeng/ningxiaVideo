@@ -40,10 +40,7 @@ import sunger.org.demo.R;
 
 public class FragmentOnline extends FragmentBase implements OnItemClickListener {
 
-	/** 缓存视频列表 */
-	private static ArrayList<String[]> mOnlineList = new ArrayList<String[]>();
-	/** 缓存视频LOGO列表 */
-	private static ArrayList<Integer> mOnlineLogoList = new ArrayList<Integer>();
+
 	private WebView mWebView;
 	private ListView mListView;
 	/** 网页正在加载 */
@@ -335,7 +332,6 @@ public class FragmentOnline extends FragmentBase implements OnItemClickListener 
 
 	static {
 
-		// private final static String[] CATEGORY = { "电视直播", "视频网站" };
 		root.add(new OnlineVideo("电视直播", R.drawable.logo_cntv, 1));
 		root.add(new OnlineVideo("视频网站", R.drawable.logo_youku, 0));
 
@@ -359,22 +355,3 @@ public class FragmentOnline extends FragmentBase implements OnItemClickListener 
 				"http://m.tudou.com"));
 	}
 }
-
-/*
- * private boolean loadVideo(final String url) { if (StringUtils.isEmpty(url))
- * return false;
- * 
- * mCurrentUrl = url;
- * 
- * new AsyncTask<Void, Void, OnlineVideo>() {
- * 
- * @Override protected OnlineVideo doInBackground(Void... params) {
- * Log.d("Youku", url); if (url.startsWith("http://m.youku.com")) { return
- * VideoHelper.getYoukuVideo(url); } return null; }
- * 
- * @Override protected void onPostExecute(OnlineVideo result) {
- * super.onPostExecute(result); if (result != null) { Intent intent = new
- * Intent(getActivity(), VideoPlayerActivity.class); intent.putExtra("path",
- * result.url); intent.putExtra("title", result.title); startActivity(intent); }
- * else { mWebView.loadUrl(url); } } }.execute(); return true; }
- */
