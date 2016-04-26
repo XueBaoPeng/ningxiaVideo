@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import org.sunger.net.entity.MediaEntity;
-import org.sunger.net.ui.activity.VideoPlayActivity;
+import org.sunger.net.ui.activity.OnLineVideoPlayActivity;
 import org.sunger.net.ui.adapter.MediasAdapter;
 import org.sunger.net.view.MediasView;
 
@@ -59,7 +59,7 @@ public abstract class MediasFragment extends LoadMoreRecyclerFragemnt implements
 
     @Override
     public void onItemClick(MediaEntity entity) {
-        startActivity(VideoPlayActivity.createIntent(getActivity(), entity.getId()));
+        startActivity(OnLineVideoPlayActivity.createIntent(getActivity(), entity.getId()));
     }
 
 

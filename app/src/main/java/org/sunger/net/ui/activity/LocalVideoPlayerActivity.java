@@ -2,7 +2,7 @@
  * Copyright (C) 2011 VOV IO (http://vov.io/)
  */
 
-package org.sunger.net.ui.localVide;
+package org.sunger.net.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -35,7 +35,7 @@ import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 import sunger.org.demo.R;
 
-public class VideoPlayerActivity extends BaseCompatActivity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnInfoListener {
+public class LocalVideoPlayerActivity extends BaseCompatActivity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnInfoListener {
 
 	private String mPath;
 	private String mTitle;

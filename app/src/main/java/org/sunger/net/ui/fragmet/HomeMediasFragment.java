@@ -10,7 +10,7 @@ import org.sunger.net.presenter.HomeMediasPresenter;
 import org.sunger.net.presenter.impl.HomeMediasPresenterImpl;
 import org.sunger.net.support.recyclerview.MGridLayoutManager;
 import org.sunger.net.ui.activity.MainActivity;
-import org.sunger.net.ui.activity.VideoPlayActivity;
+import org.sunger.net.ui.activity.OnLineVideoPlayActivity;
 import org.sunger.net.ui.adapter.MediasAdapter;
 import org.sunger.net.view.HomeMediasView;
 
@@ -113,7 +113,7 @@ public class HomeMediasFragment extends RefreshAndLoadFragment implements HomeMe
 
     @Override
     public void onItemClick(MediaEntity entity) {
-        startActivity(VideoPlayActivity.createIntent(getActivity(), entity.getId()));
+        startActivity(OnLineVideoPlayActivity.createIntent(getActivity(), entity.getId()));
     }
 
 

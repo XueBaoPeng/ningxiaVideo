@@ -1,4 +1,4 @@
-package org.sunger.net.ui.localVide;
+package org.sunger.net.ui.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.sunger.net.po.OnlineVideo;
-import org.sunger.net.ui.activity.WebViewActivity;
 import org.sunger.net.ui.base.ArrayAdapter;
 import org.sunger.net.ui.helper.XmlReaderHelper;
 import org.sunger.net.util.FileUtils;
@@ -97,7 +96,7 @@ public class OnlineWebActivity extends AppCompatActivity implements AdapterView.
             case 3:
                 level = 4;
                 // clearAndLoad(item.url);
-                Intent intent = new Intent(this, VideoPlayerActivity.class);
+                Intent intent = new Intent(this, LocalVideoPlayerActivity.class);
                 intent.putExtra("path", item.url);
                 intent.putExtra("title", item.title);
                 startActivity(intent);
@@ -146,7 +145,7 @@ public class OnlineWebActivity extends AppCompatActivity implements AdapterView.
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
                                     Intent intent = new Intent(OnlineWebActivity.this,
-                                            VideoPlayerActivity.class);
+                                            LocalVideoPlayerActivity.class);
                                     intent.putExtra("path", url);
                                     intent.putExtra("title", mTitle);
                                     startActivity(intent);
@@ -226,6 +225,7 @@ public class OnlineWebActivity extends AppCompatActivity implements AdapterView.
     public void onBackPressed() {
         switch (level) {
             case 1:
+                finish();
                 break;
             case 2:
                 level = 1;

@@ -1,4 +1,4 @@
-package org.sunger.net.ui.localVide;
+package org.sunger.net.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;

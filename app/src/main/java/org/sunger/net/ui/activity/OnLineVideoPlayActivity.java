@@ -1,7 +1,6 @@
 package org.sunger.net.ui.activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,7 +19,6 @@ import org.sunger.net.presenter.impl.PlayVideoPresenterImpl;
 import org.sunger.net.support.recyclerview.OnRecycleViewScrollListener;
 import org.sunger.net.support.recyclerview.TopScrollListener;
 import org.sunger.net.ui.adapter.CommentsAdapter;
-import org.sunger.net.utils.ClipboardUtils;
 import org.sunger.net.utils.DensityUtil;
 import org.sunger.net.utils.DeviceUtils;
 import org.sunger.net.view.PlayVideoView;
@@ -30,7 +28,7 @@ import java.util.List;
 import io.vov.vitamio.Vitamio;
 import sunger.org.demo.R;
 
-public class VideoPlayActivity extends BaseCompatActivity implements PlayVideoView, SwipeRefreshLayout.OnRefreshListener, CommentsAdapter.OnCommentItemClickListener {
+public class OnLineVideoPlayActivity extends BaseCompatActivity implements PlayVideoView, SwipeRefreshLayout.OnRefreshListener, CommentsAdapter.OnCommentItemClickListener {
     public final static String MEDIAS_ID_KEY = "media_id";
     private RecyclerView mRecyclerView;
     private CommentsAdapter mAdapter;
@@ -40,7 +38,7 @@ public class VideoPlayActivity extends BaseCompatActivity implements PlayVideoVi
     private int current_comment_page = 1;
 
     public static Intent createIntent(Context context, int id) {
-        Intent intent = new Intent(context, VideoPlayActivity.class);
+        Intent intent = new Intent(context, OnLineVideoPlayActivity.class);
         intent.putExtra(MEDIAS_ID_KEY, id);
         return intent;
     }

@@ -1,4 +1,4 @@
-package org.sunger.net.ui.localVide;
+package org.sunger.net.ui.activity;
 
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -8,8 +8,8 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -28,10 +28,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import org.sunger.net.app.App;
 import org.sunger.net.business.FileBusiness;
 import org.sunger.net.database.DbHelper;
 import org.sunger.net.po.POMedia;
 import org.sunger.net.service.MediaScannerService;
+import org.sunger.net.ui.OPreference;
 import org.sunger.net.ui.base.ArrayAdapter;
 import org.sunger.net.util.FileUtils;
 
@@ -81,6 +83,13 @@ public class Local_video_activity extends AppCompatActivity implements OnItemCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_file);
+
+        OPreference pref = new OPreference(this);
+        //	首次运行，扫描SD卡
+        if (pref.getBoolean(App.PREF_KEY_FIRST, true)) {
+            this.startService(new Intent(getApplicationContext(), MediaScannerService.class).putExtra(MediaScannerService.EXTRA_DIRECTORY, Environment.getExternalStorageDirectory().getAbsolutePath()));
+        }
+
         first_letter_overlay= (TextView) findViewById(R.id.first_letter_overlay);
         alphabet_scroller= (ImageView) findViewById(R.id.alphabet_scroller);
         mTempListView= (ListView) findViewById(R.id.templist);
@@ -248,57 +257,12 @@ public class Local_video_activity extends AppCompatActivity implements OnItemCli
 
         }).setPositiveButton(android.R.string.no, null).show();
     }
-/*
-	public Handler mDownloadHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			POMedia p;
-			String url = msg.obj.toString();
-			switch (msg.what) {
-				case FileDownloadHelper.MESSAGE_START://开始下载
-					p = new POMedia();
-					p.path = mParent.mFileDownload.mDownloadUrls.get(url);
-					p.title = new File(p.path).getName();
-					p.status = 0;
-					p.file_size = 0;
-					if (mDownloadAdapter == null) {
-						mDownloadAdapter = new FileAdapter(getActivity(), new ArrayList<POMedia>());
-						mDownloadAdapter.add(p, url);
-						mTempListView.setAdapter(mDownloadAdapter);
-						mTempListView.setVisibility(View.VISIBLE);
-					} else {
-						mDownloadAdapter.add(p, url);
-						mDownloadAdapter.notifyDataSetChanged();
-					}
-					break;
-				case FileDownloadHelper.MESSAGE_PROGRESS://正在下载
-					p = mDownloadAdapter.getItem(url);
-					p.temp_file_size = msg.arg1;
-					p.file_size = msg.arg2;
-					int status = (int) ((msg.arg1 * 1.0 / msg.arg2) * 10);
-					if (status > 10)
-						status = 10;
-					p.status = status;
-					mDownloadAdapter.notifyDataSetChanged();
-					break;
-				case FileDownloadHelper.MESSAGE_STOP://下载结束
-					p = mDownloadAdapter.getItem(url);
-					new DbHelper<POMedia>().create(p);
-					//				FileBusiness.insertFile(getActivity(), p);
-					break;
-				case FileDownloadHelper.MESSAGE_ERROR:
-					Toast.makeText(getActivity(), url, Toast.LENGTH_LONG).show();
-					break;
-			}
-			super.handleMessage(msg);
-		}
-	};*/
 
     /** 单击启动播放 */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final POMedia f = parent == mListView ? mAdapter.getItem(position) : mDownloadAdapter.getItem(position);
-        Intent intent = new Intent(this, VideoPlayerActivity.class);
+        Intent intent = new Intent(this, LocalVideoPlayerActivity.class);
         intent.putExtra("path", f.path);
         intent.putExtra("title", f.title);
         startActivity(intent);
