@@ -2,9 +2,9 @@ package org.sunger.net.model;
 
 import com.google.gson.JsonElement;
 
-import org.sunger.net.api.ApiClient;
-import org.sunger.net.api.HeaderMap;
-import org.sunger.net.api.ParamsMap;
+import org.sunger.net.app.ApiClient;
+import org.sunger.net.app.HeaderMap;
+import org.sunger.net.app.ParamsMap;
 import org.sunger.net.app.AppConstants;
 import org.sunger.net.entity.CommentEntity;
 import org.sunger.net.entity.MediaEntity;

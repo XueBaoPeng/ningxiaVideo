@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -31,7 +32,7 @@ import android.widget.Toast;
 import org.sunger.net.app.App;
 import org.sunger.net.business.FileBusiness;
 import org.sunger.net.database.DbHelper;
-import org.sunger.net.po.POMedia;
+import org.sunger.net.entity.POMedia;
 import org.sunger.net.service.MediaScannerService;
 import org.sunger.net.ui.OPreference;
 import org.sunger.net.ui.base.ArrayAdapter;
@@ -320,20 +321,11 @@ public class Local_video_activity extends AppCompatActivity implements OnItemCli
                 file_size = FileUtils.showFileSize(f.file_size);
             }
             ((TextView) convertView.findViewById(R.id.file_size)).setText(file_size);
-
-            //显示进度表
-            final ImageView status = (ImageView) convertView.findViewById(R.id.status);
-            if (f.status > -1) {
-                int resStauts = getStatusImage(f.status);
-                if (resStauts > 0) {
-                    if (status.getVisibility() != View.VISIBLE)
-                        status.setVisibility(View.VISIBLE);
-                    status.setImageResource(resStauts);
-                }
-            } else {
-                if (status.getVisibility() != View.GONE)
-                    status.setVisibility(View.GONE);
+            ImageView thumb= (ImageView) convertView.findViewById(R.id.thumbnail);
+            if(f.thumb_path!=null){
+                thumb.setImageURI(Uri.parse(f.thumb_path));
             }
+
             return convertView;
         }
 
@@ -353,46 +345,6 @@ public class Local_video_activity extends AppCompatActivity implements OnItemCli
         public POMedia getItem(String url) {
             return maps.get(url);
         }
-    }
-
-    private int getStatusImage(int status) {
-        int resStauts = -1;
-        switch (status) {
-            case 0:
-                resStauts = R.drawable.down_btn_0;
-                break;
-            case 1:
-                resStauts = R.drawable.down_btn_1;
-                break;
-            case 2:
-                resStauts = R.drawable.down_btn_2;
-                break;
-            case 3:
-                resStauts = R.drawable.down_btn_3;
-                break;
-            case 4:
-                resStauts = R.drawable.down_btn_4;
-                break;
-            case 5:
-                resStauts = R.drawable.down_btn_5;
-                break;
-            case 6:
-                resStauts = R.drawable.down_btn_6;
-                break;
-            case 7:
-                resStauts = R.drawable.down_btn_7;
-                break;
-            case 8:
-                resStauts = R.drawable.down_btn_8;
-                break;
-            case 9:
-                resStauts = R.drawable.down_btn_9;
-                break;
-            case 10:
-                resStauts = R.drawable.down_btn_10;
-                break;
-        }
-        return resStauts;
     }
 
     /**

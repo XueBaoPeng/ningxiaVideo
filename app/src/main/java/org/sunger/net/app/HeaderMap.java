@@ -1,4 +1,4 @@
-package org.sunger.net.api;
+package org.sunger.net.app;
 
 import org.sunger.net.app.App;
 import org.sunger.net.app.AppConstants;

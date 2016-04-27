@@ -1,4 +1,4 @@
-package org.sunger.net.utils;
+package org.sunger.net.util;
 
 import java.util.Calendar;
 import java.util.Date;

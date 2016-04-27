@@ -1,4 +1,4 @@
-package org.sunger.net.utils;
+package org.sunger.net.util;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.sunger.net.R;
 import org.sunger.net.app.App;
+import org.sunger.net.utils.ResourcesUtils;
 
 /**
  * Created by sunger on 2015/11/16.

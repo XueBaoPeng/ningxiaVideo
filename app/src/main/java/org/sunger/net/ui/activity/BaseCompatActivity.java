@@ -17,7 +17,7 @@ import com.gc.materialdesign.widgets.Dialog;
 import org.sunger.net.support.okhttp.OkHttpClientManager;
 import org.sunger.net.utils.NetWorkUtils;
 import org.sunger.net.utils.SystemBarTintManager;
-import org.sunger.net.utils.UiHelper;
+import org.sunger.net.util.UiHelper;
 import org.sunger.net.widget.SolidToast;
 
 import sunger.org.demo.R;

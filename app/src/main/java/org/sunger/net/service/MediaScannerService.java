@@ -16,7 +16,7 @@ import android.os.Message;
 import org.sunger.net.app.App;
 import org.sunger.net.database.DbHelper;
 import org.sunger.net.exception.Logger;
-import org.sunger.net.po.POMedia;
+import org.sunger.net.entity.POMedia;
 import org.sunger.net.ui.OPreference;
 import org.sunger.net.util.ConvertUtils;
 import org.sunger.net.util.FileUtils;

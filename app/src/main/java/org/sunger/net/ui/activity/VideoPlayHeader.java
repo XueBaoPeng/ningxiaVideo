@@ -10,7 +10,7 @@ import android.widget.TextView;
 import org.sunger.net.app.AppUtils;
 import org.sunger.net.entity.MediaEntity;
 import org.sunger.net.ui.widget.VideoControllerView;
-import org.sunger.net.utils.DateUtils;
+import org.sunger.net.util.DateUtils;
 import org.sunger.net.widget.TextImageView;
 
 import cn.bingoogolapple.badgeview.BGABadgeImageView;

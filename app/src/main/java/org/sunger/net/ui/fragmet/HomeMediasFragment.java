@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import org.sunger.net.entity.MediaEntity;
 import org.sunger.net.presenter.HomeMediasPresenter;
 import org.sunger.net.presenter.impl.HomeMediasPresenterImpl;
-import org.sunger.net.support.recyclerview.MGridLayoutManager;
+import org.sunger.net.ui.recyclerview.MGridLayoutManager;
 import org.sunger.net.ui.activity.MainActivity;
 import org.sunger.net.ui.activity.OnLineVideoPlayActivity;
 import org.sunger.net.ui.adapter.MediasAdapter;

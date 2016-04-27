@@ -6,7 +6,7 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 import org.sunger.net.database.SQLiteHelperOrm;
 import org.sunger.net.exception.Logger;
-import org.sunger.net.po.POMedia;
+import org.sunger.net.entity.POMedia;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

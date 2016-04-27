@@ -1,4 +1,4 @@
-package org.sunger.net.po;
+package org.sunger.net.entity;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

@@ -14,7 +14,7 @@ import org.sunger.net.app.AppUtils;
 import org.sunger.net.entity.CommentEntity;
 import org.sunger.net.ui.widget.comment.CommentTextView;
 import org.sunger.net.ui.widget.refresh.BaseLoadMoreRecyclerAdapter;
-import org.sunger.net.utils.DateUtils;
+import org.sunger.net.util.DateUtils;
 
 import cn.bingoogolapple.badgeview.BGABadgeImageView;
 import sunger.org.demo.R;

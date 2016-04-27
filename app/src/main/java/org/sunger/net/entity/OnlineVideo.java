@@ -1,4 +1,4 @@
-package org.sunger.net.po;
+package org.sunger.net.entity;
 
 import java.util.ArrayList;
 

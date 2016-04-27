@@ -22,7 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.sunger.net.po.OnlineVideo;
+import org.sunger.net.entity.OnlineVideo;
 import org.sunger.net.ui.base.ArrayAdapter;
 import org.sunger.net.ui.helper.XmlReaderHelper;
 import org.sunger.net.util.FileUtils;

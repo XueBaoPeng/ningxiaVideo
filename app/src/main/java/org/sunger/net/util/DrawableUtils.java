@@ -1,4 +1,4 @@
-package org.sunger.net.utils;
+package org.sunger.net.util;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;

@@ -1,4 +1,4 @@
-package org.sunger.net.support.recyclerview;
+package org.sunger.net.ui.recyclerview;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

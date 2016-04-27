@@ -1,7 +1,7 @@
 package org.sunger.net.model;
 
-import org.sunger.net.api.ApiClient;
-import org.sunger.net.api.ParamsMap;
+import org.sunger.net.app.ApiClient;
+import org.sunger.net.app.ParamsMap;
 import org.sunger.net.app.AppConstants;
 import org.sunger.net.entity.VideoItemEntity;
 import org.sunger.net.support.okhttp.callback.ResultCallback;

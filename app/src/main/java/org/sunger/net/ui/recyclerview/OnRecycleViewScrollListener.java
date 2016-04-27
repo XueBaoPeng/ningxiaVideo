@@ -1,4 +1,4 @@
-package org.sunger.net.support.recyclerview;
+package org.sunger.net.ui.recyclerview;
 
 /*
  * Copyright (C) 2015 Jorge Castillo Pérez

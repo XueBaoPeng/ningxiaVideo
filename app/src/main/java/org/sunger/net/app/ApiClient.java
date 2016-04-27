@@ -1,6 +1,5 @@
-package org.sunger.net.api;
+package org.sunger.net.app;
 
-import org.sunger.net.app.AppConstants;
 import org.sunger.net.support.okhttp.request.OkHttpRequest;
 
 import java.util.Map;

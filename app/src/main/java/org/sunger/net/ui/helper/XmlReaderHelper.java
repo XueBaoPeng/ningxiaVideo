@@ -3,7 +3,7 @@ package org.sunger.net.ui.helper;
 import android.content.Context;
 
 
-import org.sunger.net.po.OnlineVideo;
+import org.sunger.net.entity.OnlineVideo;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;

@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.sunger.net.support.recyclerview.OnRecycleViewScrollListener;
+import org.sunger.net.ui.recyclerview.OnRecycleViewScrollListener;
 import org.sunger.net.ui.widget.refresh.BaseLoadMoreRecyclerAdapter;
 import org.sunger.net.utils.TimeUtils;
 

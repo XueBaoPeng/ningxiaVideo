@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide;
 import org.sunger.net.entity.MediaEntity;
 import org.sunger.net.entity.SimpleUserEntity;
 import org.sunger.net.entity.VideoItemEntity;
-import org.sunger.net.utils.GlideUtils;
+import org.sunger.net.util.GlideUtils;
 
 import java.util.ArrayList;
 import java.util.List;
