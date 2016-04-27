@@ -8,12 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="org.sunger.net.ui.activity.OnlineWebActivity">
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
-        <ListView
-            android:id="@android:id/list"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:cacheColorHint="@android:color/transparent"
@@ -22,26 +18,4 @@
             android:fadingEdge="none"
             android:listSelector="#e8e8e8"
             android:scrollbars="none" />
-
-        <WebView
-            android:id="@+id/webview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:visibility="gone" >
-        </WebView>
-
-        <include layout="@layout/common_loading" />
-
-        <TextView
-            android:id="@+id/url" android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom" android:singleLine="true"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:layout_marginBottom="5dip"
-            android:layout_marginLeft="5dip"
-            android:background="@drawable/in_bubble" />
-
-    </FrameLayout>
-
 </RelativeLayout>

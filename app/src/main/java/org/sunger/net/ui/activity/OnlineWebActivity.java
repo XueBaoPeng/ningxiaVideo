@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.sunger.net.entity.OnlineVideo;
+import org.sunger.net.ui.adapter.TvProgramAdapter;
 import org.sunger.net.ui.base.ArrayAdapter;
 import org.sunger.net.ui.helper.XmlReaderHelper;
 import org.sunger.net.util.FileUtils;
@@ -34,295 +37,35 @@ import java.util.List;
 
 import sunger.org.demo.R;
 
-public class OnlineWebActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class OnlineWebActivity extends AppCompatActivity {
 
-    private WebView mWebView;
-    private ListView mListView;
-    /** 网页正在加载 */
-    private View mLoading;
-    /** 历史记录 */
-    private List<String> mHistory = new ArrayList<String>();
-    /** 显示当前正在加载的url */
-    private TextView mUrl;
+    private RecyclerView mListView;
     private String mTitle;
-    private final static ArrayList<OnlineVideo> root = new ArrayList<OnlineVideo>();
-    private ArrayList<OnlineVideo> tvs;
     private final static ArrayList<OnlineVideo> videos = new ArrayList<OnlineVideo>();
-    private int level = 1;
-    private DataAdapter mAdapter;
+    private TvProgramAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_web);
-        mListView = (ListView) findViewById(android.R.id.list);
-        mWebView = (WebView)findViewById(R.id.webview);
-        mUrl = (TextView) findViewById(R.id.url);
-        mLoading = findViewById(R.id.loading);
-
-        mListView.setOnItemClickListener(this);
-        //initWebView();
-        mAdapter = new DataAdapter(this);
-        mListView.setAdapter(new DataAdapter(this));
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        final OnlineVideo item = mAdapter.getItem(position);
-        switch (level) {
-            case 1:// 顶级
-                level = 2;
-                if (position == 0) {
-                    // 直播
-                    if (tvs == null)
-                        tvs = XmlReaderHelper.getAllCategory(this);
-                    mAdapter.replace(tvs);
-                } else {
-                    // 视频
-                    mAdapter.replace(videos);
-                }
-                mListView.setAdapter(mAdapter);
-                break;
-            case 2://
-                level = 3;
-                if (item.id != null) {
-                    // 直播
-                    mAdapter.replace(XmlReaderHelper.getVideos(this,
-                            item.id));
-                    mListView.setAdapter(mAdapter);
-                } else {
-                    clearAndLoad(item.url);
-                }
-                break;
-            case 3:
-                level = 4;
-                // clearAndLoad(item.url);
-                Intent intent = new Intent(this, LocalVideoPlayerActivity.class);
-                intent.putExtra("path", item.url);
-                intent.putExtra("title", item.title);
+        mListView = (RecyclerView) findViewById(R.id.recycler_view);
+        mListView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter=new TvProgramAdapter(videos,this);
+        mListView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new TvProgramAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(OnlineVideo onlineVideo) {
+                Intent intent = WebViewActivity.createIntent(OnlineWebActivity.this, onlineVideo.url);
                 startActivity(intent);
-                break;
-        }
-    }
-    /** 初始化WebView */
-    private void initWebView() {
-        mWebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        //mWebView.getSettings().setPluginsEnabled(true);
-
-        mWebView.setWebViewClient(new WebViewClient() {
-
-            /** 页面开始加载 */
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                mUrl.setText(url);
-                mUrl.setVisibility(View.VISIBLE);
-            }
-
-            /** 页面加载完成 */
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                mLoading.setVisibility(View.GONE);
-                mWebView.setVisibility(View.VISIBLE);
-                if (!mHistory.contains(url))
-                    mHistory.add(0, url);
-                mUrl.setVisibility(View.GONE);
-                // 取得title
-                mTitle = view.getTitle();
-            };
-
-            /** 页面跳转 */
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view,
-                                                    final String url) {
-                if (FileUtils.isVideoOrAudio(url)) {
-                    Dialog dialog = new AlertDialog.Builder(OnlineWebActivity.this)
-                            .setIcon(android.R.drawable.btn_star)
-                            .setTitle("播放/下载").setMessage(url)
-                            .setPositiveButton("播放", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog,
-                                                    int which) {
-                                    Intent intent = new Intent(OnlineWebActivity.this,
-                                            LocalVideoPlayerActivity.class);
-                                    intent.putExtra("path", url);
-                                    intent.putExtra("title", mTitle);
-                                    startActivity(intent);
-                                }
-                            }).setNeutralButton("下载", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog,
-                                                    int which) {
-                                    if (Environment.MEDIA_MOUNTED
-                                            .equals(Environment
-                                                    .getExternalStorageState())) {
-                                      //  LocalVideoActivity activity = (LocalVideoActivity) this;
-                                        String savePath = Environment
-                                                .getExternalStorageDirectory()
-                                                + "/";
-                                        if (TextUtils.isEmpty(mTitle))
-                                            savePath += FileUtils
-                                                    .getUrlFileName(url);
-                                        else {
-                                            savePath += mTitle
-                                                    + "."
-                                                    + FileUtils
-                                                    .getUrlExtension(url);
-                                        }
-									/*	activity.mFileDownload.newDownloadFile(
-												url, savePath);*/
-                                        Toast.makeText(
-                                              OnlineWebActivity.this,
-                                                "正在下载 .."
-                                                        + FileUtils
-                                                        .getUrlFileName(savePath)
-                                                        + " ，可从本地视频查看进度！",
-                                                Toast.LENGTH_LONG).show();
-                                    } else {
-                                        Toast.makeText(OnlineWebActivity.this,
-                                                "请检测SD卡!", Toast.LENGTH_LONG)
-                                                .show();
-                                    }
-                                }
-                            }).setNegativeButton("取消", null).create();
-                    dialog.show();
-                    return true;
-                }
-                return false;
-            };
-        });
-
-        /** 处理后退键 */
-        mWebView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView != null
-                        && mWebView.canGoBack()) {
-                    if (mHistory.size() > 1) {
-                        mHistory.remove(0);
-                        mWebView.loadUrl(mHistory.get(0));
-                        return true;
-                    }
-                }
-                return false;
             }
         });
-    }
-
-    private void clearAndLoad(String url) {
-        mLoading.setVisibility(View.VISIBLE);
-        mWebView.setVisibility(View.GONE);
-        mListView.setVisibility(View.GONE);
-        mHistory.clear();
-        mWebView.clearView();
-        mWebView.loadUrl(url);
-        Intent intent = WebViewActivity.createIntent(this, url);
-        startActivity(intent);
     }
 
     @Override
     public void onBackPressed() {
-        switch (level) {
-            case 1:
-                finish();
-                break;
-            case 2:
-                level = 1;
-                mAdapter.replace(root);
-                break;
-            case 3://
-                level = 2;
-                if (mListView == null || mListView.getVisibility() == View.VISIBLE) {
-                    mAdapter.replace(tvs);
-                } else {
-                    switchWebViewToListView();
-                }
-                break;
-            case 4:
-                level = 3;
-                switchWebViewToListView();
-                break;
-        }
-        mListView.setAdapter(mAdapter);
-    }
-
-    private void switchWebViewToListView() {
-        mWebView.clearView();
-        mUrl.setVisibility(View.GONE);
-        mListView.setVisibility(View.VISIBLE);
-        mWebView.setVisibility(View.GONE);
-        mLoading.setVisibility(View.GONE);
-    }
-
-    /** 数据适配 */
-    private class DataAdapter extends ArrayAdapter<OnlineVideo> {
-
-        public DataAdapter(Context ctx) {
-            super(ctx, root);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            final OnlineVideo item = getItem(position);
-            if (convertView == null) {
-                final LayoutInflater mInflater =getLayoutInflater();
-                convertView = mInflater.inflate(R.layout.fragment_online_item,
-                        null);
-            }
-            ImageView thumbnail = (ImageView) convertView
-                    .findViewById(R.id.thumbnail);
-            if (item.iconId > 0)
-                thumbnail.setImageResource(item.iconId);
-            else
-                thumbnail.setImageDrawable(null);
-            ((TextView) convertView.findViewById(R.id.title))
-                    .setText(item.title);
-
-            return convertView;
-        }
-
-    }
-
-    // ~~~~~~~~~~~~~处理FLASH退出的问题 ~~~~~~~~
-
-    private void callHiddenWebViewMethod(String name) {
-        if (mWebView != null) {
-            try {
-                Method method = WebView.class.getMethod(name);
-                method.invoke(mWebView);
-            } catch (NoSuchMethodException e) {
-            } catch (IllegalAccessException e) {
-            } catch (InvocationTargetException e) {
-            }
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (mWebView != null) {
-            mWebView.pauseTimers();
-            if (this.isFinishing()) {
-                mWebView.loadUrl("about:blank");
-            }
-            callHiddenWebViewMethod("onPause");
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mWebView != null) {
-            mWebView.resumeTimers();
-            callHiddenWebViewMethod("onResume");
-        }
+       finish();
     }
 
     static {
-
-        root.add(new OnlineVideo("电视直播", R.drawable.logo_cntv, 1));
-        root.add(new OnlineVideo("视频网站", R.drawable.logo_youku, 0));
 
         videos.add(new OnlineVideo("优酷视频", R.drawable.logo_youku, 0,
                 "http://3g.youku.com"));

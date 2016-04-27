@@ -262,7 +262,6 @@
 
         <activity android:name="org.sunger.net.ui.activity.Local_video_activity" />
         <activity android:name="org.sunger.net.ui.activity.OnlineWebActivity" />
-        <activity android:name="org.sunger.net.ui.activity.WebStatusAcivity"></activity>
     </application>
 
 </manifest>

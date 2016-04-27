@@ -8,8 +8,9 @@
         android:id="@+id/thumbnail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        layout_gravity="center_vertical"
+        android:layout_gravity="center_vertical"
         android:layout_centerVertical="true"
+        android:scaleType="fitXY"
         android:layout_margin="4.0dip" />
 
     <ImageView android:id="@+id/arrow"

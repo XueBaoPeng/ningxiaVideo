@@ -121,8 +121,6 @@ public class MainActivity extends BaseCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
-            Intent intent=new Intent(MainActivity.this, WebStatusAcivity.class);
-            startActivity(intent);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
