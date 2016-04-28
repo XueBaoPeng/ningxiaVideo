@@ -34,7 +34,6 @@ public class BaseCompatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setStateBarColor(R.color.colorPrimaryDark);
     }
-
     protected void setStateBarColor(int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window win = getWindow();

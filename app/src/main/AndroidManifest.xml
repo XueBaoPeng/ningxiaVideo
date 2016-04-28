@@ -15,7 +15,6 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
@@ -23,6 +22,11 @@
     <!-- 拍照权限 -->
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name="org.sunger.net.app.App"
@@ -260,8 +264,10 @@
             android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"
             android:value="GlideModule" />
 
-        <activity android:name="org.sunger.net.ui.activity.Local_video_activity" />
-        <activity android:name="org.sunger.net.ui.activity.OnlineWebActivity" />
+        <activity android:name="org.sunger.net.ui.activity.Local_video_activity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="org.sunger.net.ui.activity.OnlineWebActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

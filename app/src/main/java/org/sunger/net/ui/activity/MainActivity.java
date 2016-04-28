@@ -113,7 +113,6 @@ public class MainActivity extends BaseCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_camera) {
-            // Handle the camera action
             Intent intent=new Intent(MainActivity.this, Local_video_activity.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {

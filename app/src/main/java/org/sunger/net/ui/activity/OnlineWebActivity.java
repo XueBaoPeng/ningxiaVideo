@@ -1,52 +1,30 @@
 package org.sunger.net.ui.activity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
+
 
 import org.sunger.net.entity.OnlineVideo;
 import org.sunger.net.ui.adapter.TvProgramAdapter;
-import org.sunger.net.ui.base.ArrayAdapter;
-import org.sunger.net.ui.helper.XmlReaderHelper;
-import org.sunger.net.util.FileUtils;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.List;
 
 import sunger.org.demo.R;
 
-public class OnlineWebActivity extends AppCompatActivity {
+public class OnlineWebActivity extends BaseCompatActivity {
 
     private RecyclerView mListView;
-    private String mTitle;
     private final static ArrayList<OnlineVideo> videos = new ArrayList<OnlineVideo>();
     private TvProgramAdapter mAdapter;
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_web);
+        setupActionBar();
         mListView = (RecyclerView) findViewById(R.id.recycler_view);
         mListView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter=new TvProgramAdapter(videos,this);
@@ -65,6 +43,13 @@ public class OnlineWebActivity extends AppCompatActivity {
        finish();
     }
 
+    private void setupActionBar() {
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        mToolbar.setTitle("视频网站");
+        setSupportActionBar(mToolbar);
+        toobarAsBackButton(mToolbar);
+
+    }
     static {
 
         videos.add(new OnlineVideo("优酷视频", R.drawable.logo_youku, 0,

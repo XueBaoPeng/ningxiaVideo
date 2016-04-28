@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -45,7 +46,7 @@ import java.util.List;
 
 import sunger.org.demo.R;
 
-public class Local_video_activity extends AppCompatActivity implements OnItemClickListener,MediaScannerService.IMediaScannerObserver {
+public class Local_video_activity extends BaseCompatActivity implements OnItemClickListener,MediaScannerService.IMediaScannerObserver {
 
     private FileAdapter mAdapter;
     private TextView first_letter_overlay;
@@ -53,6 +54,7 @@ public class Local_video_activity extends AppCompatActivity implements OnItemCli
     private FileAdapter mDownloadAdapter;
     protected ListView mListView;
     protected View mLoadingLayout;
+    private Toolbar mToolbar;
     /** 临时列表 */
 
     private ListView mTempListView;
@@ -84,7 +86,7 @@ public class Local_video_activity extends AppCompatActivity implements OnItemCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_file);
-
+        setupActionBar();
         OPreference pref = new OPreference(this);
         //	首次运行，扫描SD卡
         if (pref.getBoolean(App.PREF_KEY_FIRST, true)) {
@@ -113,7 +115,13 @@ public class Local_video_activity extends AppCompatActivity implements OnItemCli
 
         this.bindService(new Intent(getApplicationContext(), MediaScannerService.class), mMediaScannerServiceCooection, Context.BIND_AUTO_CREATE);
     }
+    private void setupActionBar() {
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        mToolbar.setTitle("视频网站");
+        setSupportActionBar(mToolbar);
+        toobarAsBackButton(mToolbar);
 
+    }
     @Override
     public void onStart() {
         super.onStart();
