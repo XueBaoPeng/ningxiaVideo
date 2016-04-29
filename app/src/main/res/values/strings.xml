@@ -52,7 +52,7 @@
     <string name="file_rename_exists">文件已存在</string>
     <string name="file_delete">删除</string>
     <string name="file_delete_confirm">确定删除 (%s) ？</string>
-    <string name="video_layout_loading">正在缓冲...</string>
+    <string name="video_layout_loading">正在缓冲</string>
 
     <string name="vitamio_theme_app_name">VPlayer codec</string>
     <string name="VideoView_error_title">Cannot play video</string>

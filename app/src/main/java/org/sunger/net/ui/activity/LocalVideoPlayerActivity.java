@@ -4,7 +4,6 @@
 
 package org.sunger.net.ui.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -27,10 +26,8 @@ import android.widget.ImageView;
 
 
 import org.sunger.net.exception.Logger;
-import org.sunger.net.ui.activity.BaseCompatActivity;
 
 import io.vov.vitamio.MediaPlayer;
-import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 import sunger.org.demo.R;

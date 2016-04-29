@@ -61,11 +61,6 @@
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="org.sunger.net.ui.activity.PlayerActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver android:name="org.sunger.net.receiver.MediaScannerReceiver">
 
