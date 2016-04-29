@@ -261,7 +261,7 @@
 
         <activity android:name="org.sunger.net.ui.activity.Local_video_activity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="org.sunger.net.ui.activity.OnlineWebActivity"
+        <activity android:name="org.sunger.net.ui.activity.VideoWebListActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

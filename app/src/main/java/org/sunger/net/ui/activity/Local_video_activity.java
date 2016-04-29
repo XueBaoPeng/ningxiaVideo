@@ -44,6 +44,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import io.vov.vitamio.Vitamio;
 import sunger.org.demo.R;
 
 public class Local_video_activity extends BaseCompatActivity implements OnItemClickListener,MediaScannerService.IMediaScannerObserver {
@@ -85,6 +86,7 @@ public class Local_video_activity extends BaseCompatActivity implements OnItemCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Vitamio.initialize(this);
         setContentView(R.layout.fragment_file);
         setupActionBar();
         OPreference pref = new OPreference(this);

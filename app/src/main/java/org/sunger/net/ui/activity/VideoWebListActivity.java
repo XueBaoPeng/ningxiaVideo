@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import sunger.org.demo.R;
 
-public class OnlineWebActivity extends BaseCompatActivity {
+public class VideoWebListActivity extends BaseCompatActivity {
 
     private RecyclerView mListView;
     private final static ArrayList<OnlineVideo> videos = new ArrayList<OnlineVideo>();
@@ -32,7 +32,7 @@ public class OnlineWebActivity extends BaseCompatActivity {
         mAdapter.setOnItemClickListener(new TvProgramAdapter.onItemClickListener() {
             @Override
             public void onItemClick(OnlineVideo onlineVideo) {
-                Intent intent = WebViewActivity.createIntent(OnlineWebActivity.this, onlineVideo.url);
+                Intent intent = WebViewActivity.createIntent(VideoWebListActivity.this, onlineVideo.url);
                 startActivity(intent);
             }
         });

@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import org.sunger.net.exception.Logger;
 
 import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 import sunger.org.demo.R;

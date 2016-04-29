@@ -116,7 +116,7 @@ public class MainActivity extends BaseCompatActivity
             Intent intent=new Intent(MainActivity.this, Local_video_activity.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
-            Intent intent=new Intent(MainActivity.this, OnlineWebActivity.class);
+            Intent intent=new Intent(MainActivity.this, VideoWebListActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
